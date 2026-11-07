@@ -168,7 +168,7 @@
         "ngsscbuild": {
           "builder": "angular-server-side-configuration:ngsscbuild",
           "options": {
-            "additionalEnvironmentVariables": [],
+            "additionalEnvironmentVariables": ["OIDC_ISSUER", "OIDC_CLIENT_ID", "OIDC_SCOPE", "OIDC_REDIRECT_URI", "OIDC_REQUIRE_HTTPS", "OIDC_DEBUG", "BACKEND_URL", "DISABLE_BACKEND", "PRODUCTION", "APP_LABEL"],
             "buildTarget": "netzgrafik-frontend:build",
             "ngsscEnvironmentFile": "src/environments/environment.prod.ts",
             "filePattern": "**/index.html"

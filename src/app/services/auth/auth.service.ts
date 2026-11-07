@@ -14,10 +14,11 @@ export class AuthService {
   readonly initialized: Promise<unknown> | undefined;
 
   get claims(): {email: string; name: string; roles: string[]} {
-    return this.oauthService.getIdentityClaims() as {
-      email: string;
-      name: string;
-      roles: string[];
+    const rawClaims = (this.oauthService.getIdentityClaims() || {}) as Record<string, any>;
+    return {
+      email: rawClaims.email || "",
+      name: rawClaims.name || rawClaims.preferred_username || rawClaims.sub || rawClaims.email || "",
+      roles: rawClaims.roles || rawClaims.groups || [],
     };
   }
 
